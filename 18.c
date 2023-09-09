@@ -1,3 +1,9 @@
+/*======================================================================
+Name: 18.c
+Author: Tathagata Talukdar
+Description: Implement read and write lock.
+Date: 5th Sep, 2023
+======================================================================*/
 #include<stdio.h>
 #include<unistd.h>
 #include<sys/types.h>

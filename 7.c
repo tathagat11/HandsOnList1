@@ -1,10 +1,15 @@
+/*=======================================================
+Name: 7.c
+Author: Tathagata Talukdar
+Description: Read file and copy it onto a new file.
+Date: 5th Sep, 2023
+=======================================================*/
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 int main(int argc , char* argv[]) {
-	
 	if(argc != 3)
 	{
 		printf("You are useless");
@@ -23,9 +28,6 @@ int main(int argc , char* argv[]) {
 			break;
 		int char_writtern = write(fdw,&buffer,1);
 	}
-	int fd_read_close = close(fdr);
-	int fd_write_close = close(fdw);
-	if(fd_read_close == -1 || fd_write_close == -1)
-		printf("Unable to close");
-	return 0;
+	close(fdr);
+	close(fdw);
 }

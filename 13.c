@@ -1,3 +1,9 @@
+/*=======================================================
+Name: 13.c
+Author: Tathagata Talukdar
+Description: Use select to wait for STDIN.
+Date: 5th Sep, 2023
+=======================================================*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<fcntl.h>

@@ -1,3 +1,9 @@
+/*======================================================================
+Name: 17b.c
+Author: Tathagata Talukdar
+Description: Ticket reservation system using file lock (read and update).
+Date: 5th Sep, 2023
+======================================================================*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -8,10 +14,10 @@
 
 int main() {
     int fd;
-    fd = open("textfile3.txt", O_RDWR);
+    fd = open("textfile5.txt", O_RDWR);
     if (fd == -1) {
-        perror("open");
-        exit(1);
+        printf("Error opening file.\n");
+        return EXIT_FAILURE;
     }
     struct flock file_lock = {F_WRLCK, SEEK_SET, 0, 0, 0};
     file_lock.l_type = F_WRLCK;
@@ -19,15 +25,15 @@ int main() {
     printf("Press enter to get lock");
     getchar();
     if (fcntl(fd, F_SETLKW, &file_lock) == -1) {
-        perror("fcntl");
-        exit(1);
+        printf("Error getting lock on file.\n");
+        return EXIT_FAILURE;
     }
     char buff1[20];
     int bytesRead = read(fd, buff1, sizeof(buff1));
     if (bytesRead <= 0) {
-        perror("Error reading from file");
         close(fd);
-        return 1;
+        printf("Nothing in file.\n");
+        return EXIT_FAILURE;
     }
     int currentTicket = atoi(buff1);
     printf("Current ticket number: %d\n", currentTicket);
@@ -36,15 +42,15 @@ int main() {
     ssize_t br;
     br = write(fd, buff1, strlen(buff1));
     if(br == -1){
-        perror("Error in writing to the file");
-        exit(1);
+        printf("Error writing to file.\n");
+        return EXIT_FAILURE;
     }
     printf("Press enter to release lock");
     getchar();
     file_lock.l_type = F_UNLCK;
     if (fcntl(fd, F_SETLK, &file_lock) == -1) {
-        perror("fcntl");
-        exit(1);
+        printf("Error opening file.\n");
+        return EXIT_FAILURE;
     }
     close(fd);
     return 0;

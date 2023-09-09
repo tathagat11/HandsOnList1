@@ -1,3 +1,9 @@
+/*=======================================================
+Name: 10.c
+Author: Tathagata Talukdar
+Description: Open a file in rw mode and use lseek.
+Date: 5th Sep, 2023
+=======================================================*/
 #include<stdio.h>
 #include<fcntl.h>
 #include<string.h>
@@ -8,7 +14,7 @@
 int main()
 {
 	int fd;
-	fd = open("testfile1.txt",O_RDWR);
+	fd = open("testfile.txt",O_RDWR);
 	if(fd == -1)
 	{
 		printf("Error occured!!\n");

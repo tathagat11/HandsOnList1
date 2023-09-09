@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "cstdio": "c",
+        "unistd.h": "c",
+        "stdlib.h": "c"
+    }
+}

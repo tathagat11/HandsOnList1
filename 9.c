@@ -1,3 +1,10 @@
+/*=======================================================
+Name: 9.c
+Author: Tathagata Talukdar
+Description: Print stats of a file.
+Date: 7th Sep, 2023
+=======================================================*/
+
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -8,7 +15,7 @@ void sfile(char const fileName[]);
 char *formatdata(char * str , time_t val);
 int main()
 {
-	ssize_t rd;
+	size_t rd;
 	char* buffer = 0;
 	size_t buffer_size = 0;
 
@@ -57,8 +64,8 @@ void sfile(char const fileName[]){
 	printf("\nSize : %ld",sfile.st_size);
 	printf("\nBlock size : %ld",sfile.st_blksize);
 	printf("\nNumber of blocks : %ld",sfile.st_blocks);
-	printf("\nTime of last acces : %s",formatdata(date,sfile.st_atime)); //st_atime
-	printf("\nTime of last modification : %s",formatdata(date,sfile.st_ctime)); //st_ctime
-	printf("\nTime of last change : %s",formatdata(date,sfile.st_mtime)); //st_mtime
+	printf("\nTime of last access : %s",formatdata(date,sfile.st_atime));
+	printf("\nTime of last change : %s",formatdata(date,sfile.st_ctime));
+	printf("\nTime of last modification : %s",formatdata(date,sfile.st_mtime)); 
 	printf("\n");
 }
